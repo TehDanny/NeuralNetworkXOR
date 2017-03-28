@@ -49,6 +49,8 @@
     <Compile Include="INeuronReceptor.cs" />
     <Compile Include="INeuronSignal.cs" />
     <Compile Include="NeuralFactor.cs" />
+    <Compile Include="NeuralLayer.cs" />
+    <Compile Include="NeuralNet.cs" />
     <Compile Include="Neuron.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
