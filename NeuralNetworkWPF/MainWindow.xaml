@@ -1,0 +1,14 @@
+﻿<Window x:Class="NeuralNetworkWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NeuralNetworkWPF"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <Button x:Name="RunBtn" Content="Train network" HorizontalAlignment="Left" Margin="216,74,0,0" VerticalAlignment="Top" Width="91" Click="RunBtn_Click"/>
+        <Label x:Name="TitleLbl" Content="Neural Network XOR" HorizontalAlignment="Left" Margin="201,10,0,0" VerticalAlignment="Top"/>
+
+    </Grid>
+</Window>
