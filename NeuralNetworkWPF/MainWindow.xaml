@@ -9,6 +9,7 @@
     <Grid>
         <Button x:Name="RunBtn" Content="Train network" HorizontalAlignment="Left" Margin="216,74,0,0" VerticalAlignment="Top" Width="91" Click="RunBtn_Click"/>
         <Label x:Name="TitleLbl" Content="Neural Network XOR" HorizontalAlignment="Left" Margin="201,10,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="IterationLbl" Content="" HorizontalAlignment="Left" Margin="227,113,0,0" VerticalAlignment="Top" Width="69"/>
 
     </Grid>
 </Window>
