@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace NeuralNetworkXOR
 {
-    interface INeuralNet
+    public interface INeuralNet
     {
         INeuralLayer HiddenLayer { get; set; }
         INeuralLayer OutputLayer { get; set; }

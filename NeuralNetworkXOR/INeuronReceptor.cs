@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace NeuralNetworkXOR
 {
-    interface INeuronReceptor
+    public interface INeuronReceptor
     {
         Dictionary<INeuronSignal, NeuralFactor> Input { get; }
     }

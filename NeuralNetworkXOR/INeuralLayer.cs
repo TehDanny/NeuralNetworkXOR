@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace NeuralNetworkXOR
 {
-    interface INeuralLayer :IList<INeuron>
+    public interface INeuralLayer :IList<INeuron>
     {
         void Pulse(INeuralNet net);
         void ApplyLearning(INeuralNet net);

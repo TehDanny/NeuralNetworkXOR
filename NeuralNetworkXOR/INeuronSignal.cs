@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace NeuralNetworkXOR
 {
-    interface INeuronSignal
+    public interface INeuronSignal
     {
         double Output { get; set; }
     }

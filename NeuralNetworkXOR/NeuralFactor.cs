@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace NeuralNetworkXOR
 {
-    class NeuralFactor
+    public class NeuralFactor
     {
         #region Constructors
 
