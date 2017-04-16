@@ -11,25 +11,22 @@ namespace NeuralNetworkXOR
     {
         private int count;
         private bool isReadOnly;
-        List<INeuron> m_neurons;
+        private List<INeuron> m_neurons;
 
         public INeuron this[int index]
         {
-            get
-            {
-                throw new NotImplementedException();
-            }
+            get { return m_neurons[index]; }
+            set { m_neurons[index] = value; }
+        }
 
-            set
-            {
-                throw new NotImplementedException();
-            }
+        public NeuralLayer()
+        {
+            m_neurons = new List<INeuron>();
         }
 
         public int Count
         {
-            get { return count; }
-            set { count = value; }
+            get { return m_neurons.Count; }
         }
 
         public bool IsReadOnly
@@ -40,18 +37,20 @@ namespace NeuralNetworkXOR
 
         public void Add(INeuron item)
         {
-            throw new NotImplementedException();
+            m_neurons.Add(item);
         }
 
         public void ApplyLearning(INeuralNet net)
         {
+            double learningRate = net.LearningRate;
+
             foreach (INeuron n in m_neurons)
-                n.ApplyLearning(this);
+                n.ApplyLearning(this, ref learningRate);
         }
 
         public void Clear()
         {
-            throw new NotImplementedException();
+            m_neurons.Clear();
         }
 
         public bool Contains(INeuron item)

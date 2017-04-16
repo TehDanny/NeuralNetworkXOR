@@ -31,9 +31,15 @@ namespace NeuralNetworkXOR
             set { m_inputLayer = value; }
         }
 
+        public double LearningRate
+        {
+            get { return m_learningRate; }
+            set { m_learningRate = value; }
+        }
+
         public NeuralNet()
         {
-            throw new NotImplementedException();
+            m_learningRate = 0.5;
         }
 
         public void ApplyLearning()
@@ -98,7 +104,13 @@ namespace NeuralNetworkXOR
             }
         }
 
-        public void Initialize(int randomSeed, int inputNeuronCount,
+        public void Initialize(int randomSeed,
+            int inputNeuronCount, int hiddenNeuronCount, int outputNeuronCount)
+        {
+            Initialize(this, randomSeed, inputNeuronCount, hiddenNeuronCount, outputNeuronCount);
+        }
+
+        public void Initialize(NeuralNet net, int randomSeed, int inputNeuronCount,
             int hiddenNeuronCount, int outputNeuronCount)
         {
             int i, j, k, layerCount;
@@ -107,29 +119,29 @@ namespace NeuralNetworkXOR
 
             // initializations
             rand = new Random(randomSeed);
-            m_inputLayer = new NeuralLayer();
-            m_outputLayer = new NeuralLayer();
-            m_hiddenLayer = new NeuralLayer();
+            net.m_inputLayer = new NeuralLayer();
+            net.m_outputLayer = new NeuralLayer();
+            net.m_hiddenLayer = new NeuralLayer();
 
             for (i = 0; i < inputNeuronCount; i++)
-                m_inputLayer.Add(new Neuron());
+                net.m_inputLayer.Add(new Neuron(0));
 
             for (i = 0; i < outputNeuronCount; i++)
-                m_outputLayer.Add(new Neuron());
+                net.m_outputLayer.Add(new Neuron(rand.NextDouble()));
 
             for (i = 0; i < hiddenNeuronCount; i++)
-                m_hiddenLayer.Add(new Neuron());
+                net.m_hiddenLayer.Add(new Neuron(rand.NextDouble()));
 
             // wire-up input layer to hidden layer
-            for (i = 0; i < m_hiddenLayer.Count; i++)
-                for (j = 0; j < m_inputLayer.Count; j++)
-                    m_hiddenLayer[i].Input.Add(m_inputLayer[j],
+            for (i = 0; i < net.m_hiddenLayer.Count; i++)
+                for (j = 0; j < net.m_inputLayer.Count; j++)
+                    net.m_hiddenLayer[i].Input.Add(net.m_inputLayer[j],
                         new NeuralFactor(rand.NextDouble()));
 
             // wire-up output layer to hidden layer
-            for (i = 0; i < m_outputLayer.Count; i++)
-                for (j = 0; j < m_hiddenLayer.Count; j++)
-                    m_outputLayer[i].Input.Add(m_hiddenLayer[j],
+            for (i = 0; i < net.m_outputLayer.Count; i++)
+                for (j = 0; j < net.m_hiddenLayer.Count; j++)
+                    net.m_outputLayer[i].Input.Add(net.m_hiddenLayer[j],
                         new NeuralFactor(rand.NextDouble()));
         }
 

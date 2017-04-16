@@ -12,6 +12,8 @@ namespace NeuralNetworkXOR
         INeuralLayer OutputLayer { get; set; }
         INeuralLayer PerceptionLayer { get; set; }
 
+        double LearningRate { get; set; }
+
         void ApplyLearning();
         void Pulse();
     }

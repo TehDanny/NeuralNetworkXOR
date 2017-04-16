@@ -99,5 +99,10 @@ namespace NeuralNetworkWPF
 
             IterationLbl.Content = (count * 100).ToString() + " iterations required for training";
         }
+
+        private void TestResultBtn_Click(object sender, RoutedEventArgs e)
+        {
+            TestResultLbl.Content = "Test Result: Not yet implemented";
+        }
     }
 }

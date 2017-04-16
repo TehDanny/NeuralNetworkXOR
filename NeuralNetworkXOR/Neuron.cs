@@ -10,9 +10,11 @@ namespace NeuralNetworkXOR
     {
         #region Constructors
 
-        public Neuron()
+        public Neuron(double bias)
         {
-            throw new NotImplementedException();
+            m_bias = new NeuralFactor(bias);
+            m_error = 0;
+            m_input = new Dictionary<INeuronSignal, NeuralFactor>();
         }
 
         #endregion
@@ -50,7 +52,6 @@ namespace NeuralNetworkXOR
         public Dictionary<INeuronSignal, NeuralFactor> Input
         {
             get { return m_input; }
-            set { m_input = value; }
         }
 
         public double Output
@@ -62,9 +63,12 @@ namespace NeuralNetworkXOR
 
         #region Methods
 
-        public void ApplyLearning(INeuralLayer layer)
+        public void ApplyLearning(INeuralLayer layer, ref double learningRate)
         {
-            throw new NotImplementedException();
+            foreach (KeyValuePair<INeuronSignal, NeuralFactor> m in m_input)
+                m.Value.ApplyWeightChange(ref learningRate);
+
+            m_bias.ApplyWeightChange(ref learningRate);
         }
 
         public void Pulse(INeuralLayer layer)

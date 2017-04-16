@@ -13,7 +13,7 @@ namespace NeuralNetworkXOR
         public NeuralFactor(double weight)
         {
             m_weight = weight;
-            m_delta = 0;
+            m_lastDelta = m_delta = 0;
         }
 
         #endregion
@@ -22,6 +22,7 @@ namespace NeuralNetworkXOR
 
         private double m_weight;
         private double m_delta;
+        private double m_lastDelta;
 
         #endregion
 
@@ -29,14 +30,20 @@ namespace NeuralNetworkXOR
 
         public double Weight
         {
-            get { return m_delta; }
-            set { m_delta = value; }
+            get { return m_weight; }
+            set { m_weight = value; }
         }
 
         public double Delta
         {
-            get { return m_weight; }
-            set { m_weight = value; }
+            get { return m_delta; }
+            set { m_delta = value; }
+        }
+
+        public double Last_H_Vector
+        {
+            get { return m_lastDelta; }
+            //set { m_lastDelta = value; }
         }
 
         #endregion
@@ -47,6 +54,12 @@ namespace NeuralNetworkXOR
         {
             m_weight += m_delta;
             m_delta = 0;
+        }
+
+        public void ApplyWeightChange(ref double learningRate)
+        {
+            m_lastDelta = m_delta;
+            m_weight += m_delta * learningRate;
         }
 
         #endregion
