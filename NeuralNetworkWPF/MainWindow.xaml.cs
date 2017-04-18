@@ -63,7 +63,7 @@ namespace NeuralNetworkWPF
             {
                 count++;
 
-                for (int i = 0; i < 100; i++)
+                //for (int i = 0; i < 100; i++)
                     net.Train(input, output);
 
                 net.ApplyLearning();
@@ -97,7 +97,8 @@ namespace NeuralNetworkWPF
                 hh = net.OutputLayer[0].Output;
             } while (hh > mid || lh < mid || hl < mid || ll > mid);
 
-            IterationLbl.Content = (count * 100).ToString() + " iterations required for training";
+            //IterationLbl.Content = (count * 100).ToString() + " iterations required for training";
+            IterationLbl.Content = count.ToString() + " iterations required for training";
         }
 
         private void TestResultBtn_Click(object sender, RoutedEventArgs e)
