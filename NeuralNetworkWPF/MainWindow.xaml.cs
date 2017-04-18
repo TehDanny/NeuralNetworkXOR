@@ -42,7 +42,7 @@ namespace NeuralNetworkWPF
               2 hidden layer neurons
               1 output neuron*/
 
-            net.Initialize(1, 2, 2, 1);
+            net.Initialize(1, 2, 2, 1); // 4 output for Ludo?
 
             double[][] input = new double[4][];
             input[0] = new double[] { high, high };
